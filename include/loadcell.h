@@ -15,8 +15,8 @@ HX711 lcH4;
 HX711 lcH5;
 HX711 lcH6;
 
-#define CAL_FACT = -7050;
-long zero_factor = 201000;
+#define CAL_FACT -705000
+long zero_factor = 214715;
 
 // Initalize loadcells and set their calibration factors and offsets
 void loadcellInit(void){
@@ -51,13 +51,15 @@ void loadcellInit(void){
 void loadcellTare(void){
     long tare1, tare2, tare3, tare4, tare5, tare6;
     tare1 = lcH1.read_average();
-    tare2 = lcH2.read_average();
-    tare3 = lcH3.read_average();
-    tare4 = lcH4.read_average();
-    tare5 = lcH5.read_average();
-    tare6 = lcH6.read_average();
+    //tare2 = lcH2.read_average();
+    //tare3 = lcH3.read_average();
+    //tare4 = lcH4.read_average();
+    //tare5 = lcH5.read_average();
+    //tare6 = lcH6.read_average();
 
-    zero_factor = tare1/6 + tare2/6 + tare3/6 + tare4/6 + tare5/6 + tare6/6;
+    //zero_factor = tare1/6 + tare2/6 + tare3/6 + tare4/6 + tare5/6 + tare6/6;
+    zero_factor = tare1;
+    lcH1.set_offset(zero_factor);
     
 } // loadcellInit
 
@@ -69,28 +71,28 @@ int readLoadCell(int hopper){
     switch (hopper)
     {
     case 1:
-        reading = lcH1.get_units(3);
+        reading = 1000*lcH1.get_units();
         break;
     case 2:
-        reading = lcH2.get_units(3);
+        reading = 1000*lcH2.get_units();
         break;
     case 3:
-        reading = lcH3.get_units(3);
+        reading = 1000*lcH3.get_units();
         break;
     case 4:
-        reading = lcH4.get_units(3);
+        reading = 1000*lcH4.get_units();
         break;
     case 5:
-        reading = lcH5.get_units(3);
+        reading = 1000*lcH5.get_units();
         break;
     case 6:
-        reading = lcH6.get_units(3);
+        reading = 1000*lcH6.get_units();
         break;
     default:
         break;
     } // switch hoppper
 
-    grams = int(reading);
+    grams = (int)reading;
 
     return grams;
 

@@ -43,9 +43,15 @@
 #define W_SW_MISO 35
 #define W_SW_SCK 32
 
-#define LCH1_DOUT_PIN 34
-#define LCH1_SCK_PIN 34
+#define LCH1_DOUT_PIN 25
+#define LCH1_SCK_PIN 24
 #define LCH2_DOUT_PIN 34
 #define LCH2_SCK_PIN 34
 #define LCH3_DOUT_PIN 34
 #define LCH3_SCK_PIN 34
+#define LCH4_DOUT_PIN 34
+#define LCH4_SCK_PIN 34
+#define LCH5_DOUT_PIN 34
+#define LCH5_SCK_PIN 34
+#define LCH6_DOUT_PIN 34
+#define LCH6_SCK_PIN 34
