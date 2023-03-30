@@ -59,62 +59,62 @@ void runHoppers(uint8_t Select) {
   static bool h5_D;
   static bool h6_D;
 
-  if (hopper1.distanceToGo() == 0 && ((Select&(0x1) > 0))) {
+  if (hopper1.distanceToGo() == 0 && (((Select&(0x1)) > 0))) {
     if (h1_D) hopper1.move(BWD_DIST);
     else hopper1.move(FWD_DIST);
     h1_D = !h1_D;
   }
-  else if (Select&(0x1) == 0){
+  else if ((Select&(0x1)) == 0){
     hopper1.stop();
     hopper1.move(0);
   }
   
-  if (hopper2.distanceToGo() == 0 && (Select&(0x2) > 0)) {
+  if (hopper2.distanceToGo() == 0 && ((Select&(0x2)) > 0)) {
     if (h2_D) hopper2.move(BWD_DIST);
     else hopper2.move(FWD_DIST);
     h2_D = !h2_D;
   }
-  else if (Select&(0x2) == 0){
+  else if ((Select&(0x2)) == 0){
     hopper2.stop();
     hopper2.move(0);
   }
 
-  if (hopper3.distanceToGo() == 0 && (Select&(0x4) > 0)) {
+  if (hopper3.distanceToGo() == 0 && ((Select&(0x4)) > 0)) {
     if (h3_D) hopper3.move(BWD_DIST);
     else hopper3.move(FWD_DIST);
     h3_D = !h3_D;
   }
-  else if (Select&(0x4) == 0){
+  else if ((Select&(0x4)) == 0){
     hopper3.stop();
     hopper3.move(0);
   }
 
-  if (hopper4.distanceToGo() == 0 && (Select&(0x8) > 0)) {
+  if (hopper4.distanceToGo() == 0 && ((Select&(0x8)) > 0)) {
     if (h4_D) hopper4.move(BWD_DIST);
     else hopper4.move(FWD_DIST);
     h4_D = !h4_D;
   }
-  else if (Select&(0x8) == 0){
+  else if ((Select&(0x8)) == 0){
     hopper4.stop();
     hopper4.move(0);
   }
 
-  if (hopper5.distanceToGo() == 0 && (Select&(0x10) > 0)) {
+  if (hopper5.distanceToGo() == 0 && ((Select&(0x10)) > 0)) {
     if (h5_D) hopper5.move(BWD_DIST);
     else hopper5.move(FWD_DIST);
     h5_D = !h5_D;
   }
-  else if (Select&(0x10) == 0){
+  else if ((Select&(0x10)) == 0){
     hopper5.stop();
     hopper5.move(0);
   }
 
-  if (hopper6.distanceToGo() == 0 && (Select&(0x20) > 0)) {
+  if (hopper6.distanceToGo() == 0 && ((Select&(0x20)) > 0)) {
     if (h6_D) hopper6.move(BWD_DIST);
     else hopper6.move(FWD_DIST);
     h6_D = !h6_D;
   }
-  else if (Select&(0x20) == 0){
+  else if ((Select&(0x20)) == 0){
     hopper6.stop();
     hopper6.move(0);
   }
