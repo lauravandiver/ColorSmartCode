@@ -5,6 +5,8 @@
  * the winder system
  */
 
+#pragma once
+
 #include <AccelStepper.h>
 #include <TMCStepper.h>
 #include "pins.h"

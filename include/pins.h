@@ -55,3 +55,7 @@
 #define LCH5_SCK_PIN 34
 #define LCH6_DOUT_PIN 34
 #define LCH6_SCK_PIN 34
+
+#define DIA_CLK_PIN 34
+#define DIA_DATA_PIN 34
+#define DIA_REQ_PIN 34

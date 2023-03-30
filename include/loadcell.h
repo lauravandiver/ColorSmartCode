@@ -5,6 +5,8 @@
  * the loadcells used to weigh the material hoppers
  */
 
+#pragma once
+
 #include "pins.h"
 #include<HX711.h>
 

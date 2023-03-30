@@ -5,6 +5,7 @@
  * the hopper dispenser steppers
  */
 
+# pragma once
 
 #include <AccelStepper.h>
 #include "pins.h"
