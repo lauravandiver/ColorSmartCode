@@ -67,16 +67,16 @@ void alignerInit(void){
 }   // alignerInit
 
 bool alignerHome(void){
-  uint32_t last_time=0;
-  uint32_t ms = millis();
+  //uint32_t last_time=0;
+  //uint32_t ms = millis();
   as_aligner.setSpeed(AL_HOME_SPEED);
   do{
     as_aligner.runSpeed();
-    ms = millis();
-    if((ms-last_time) > 100) { //run every 0.1s
-      last_time = ms;
-      DRV_STATUS_t drv_status{0};
-      drv_status.sr = aligner.DRV_STATUS();
+    //ms = millis();
+    //if((ms-last_time) > 100) { //run every 0.1s
+      //last_time = ms;
+      //DRV_STATUS_t drv_status{0};
+      //drv_status.sr = aligner.DRV_STATUS();
       //Serial.print(as_aligner.speed(), DEC);
       //Serial.print(" ");
       //Serial.print(digitalRead(AL_DIAG1));
@@ -84,12 +84,12 @@ bool alignerHome(void){
       //Serial.print(drv_status.sg_result, DEC);
       //Serial.print(" ");
       //Serial.println(aligner.cs2rms(drv_status.cs_actual), DEC);
-    }
+    //}
   }while(digitalRead(AL_DIAG1));
 
   as_aligner.stop();
   as_aligner.setCurrentPosition(0);
-  Serial.println("Homed!");
+  //Serial.println("Homed!");
 
   digitalWrite(ALIGN_EN_PIN, HIGH);
   as_aligner.setSpeed(AL_OP_SPEED);
@@ -104,17 +104,17 @@ void alignerRun(void){
   if(runFwd && as_aligner.currentPosition() > AL_MAX_POS){
     as_aligner.setSpeed(-AL_OP_SPEED);
     runFwd = false;
-    Serial.print(as_aligner.currentPosition());
-    Serial.print("  ");
-    Serial.println("Reverse");
+    //Serial.print(as_aligner.currentPosition());
+    //Serial.print("  ");
+    //Serial.println("Reverse");
   }
 
   if(!runFwd && as_aligner.currentPosition() < AL_MIN_POS){
     as_aligner.setSpeed(AL_OP_SPEED);
     runFwd = true;
-    Serial.print(as_aligner.currentPosition());
-    Serial.print("  ");
-    Serial.println("Forward");
+    //Serial.print(as_aligner.currentPosition());
+    //Serial.print("  ");
+    //Serial.println("Forward");
   }
   as_aligner.runSpeed();
 }
