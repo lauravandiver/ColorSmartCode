@@ -53,14 +53,13 @@ void loadcellInit(void){
 void loadcellTare(void){
     long tare1, tare2, tare3, tare4, tare5, tare6;
     tare1 = lcH1.read_average();
-    //tare2 = lcH2.read_average();
-    //tare3 = lcH3.read_average();
-    //tare4 = lcH4.read_average();
-    //tare5 = lcH5.read_average();
-    //tare6 = lcH6.read_average();
+    tare2 = lcH2.read_average();
+    tare3 = lcH3.read_average();
+    tare4 = lcH4.read_average();
+    tare5 = lcH5.read_average();
+    tare6 = lcH6.read_average();
 
-    //zero_factor = tare1/6 + tare2/6 + tare3/6 + tare4/6 + tare5/6 + tare6/6;
-    zero_factor = tare1;
+    zero_factor = tare1/6 + tare2/6 + tare3/6 + tare4/6 + tare5/6 + tare6/6;
     lcH1.set_offset(zero_factor);
     
 } // loadcellInit
