@@ -3,6 +3,7 @@
 #include"hopperStepper.h"
 #include"loadcell.h"
 #include"puller.h"
+#include"digitalIndicator.h"
 
 void setup() {
   Serial.begin(115200);
