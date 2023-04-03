@@ -1,22 +1,22 @@
 #pragma once
 
 #define h1_STEP 28
-#define h1_DIR  29
+#define h1_DIR 29
 
 #define h2_STEP 14
-#define h2_DIR  15
+#define h2_DIR 15
 
 #define h3_STEP 16
-#define h3_DIR  17
+#define h3_DIR 17
 
 #define h4_STEP 18
-#define h4_DIR  19
+#define h4_DIR 19
 
 #define h5_STEP 20
-#define h5_DIR  21
+#define h5_DIR 21
 
 #define h6_STEP 22
-#define h6_DIR  23
+#define h6_DIR 23
 
 #define ALIGN_STEP_PIN 41
 #define ALIGN_DIR_PIN 39
@@ -59,3 +59,6 @@
 #define DIA_CLK_PIN 2
 #define DIA_DATA_PIN 52
 #define DIA_REQ_PIN 50
+
+// Message Ready pin bewteen pi and arduino
+#define PI2A_MSG_RDY_PIN 20
