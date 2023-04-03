@@ -85,16 +85,21 @@ float indicatorReadMM() {
   // Convert D6 thru D11 digits to a number
   value_str = String(in_data[5]) + String(in_data[6]) + String(in_data[7]) +
               String(in_data[8]) + String(in_data[9]) + String(in_data[10]);
-
   value = (float)value_str.toInt();
-  ff
-      // Decide which power of ten the measurement is in
-      if (decimal == 0) decimal_multiplier = 1.0;
-  else if (decimal == 1) decimal_multiplier = 10.0;
-  else if (decimal == 2) decimal_multiplier = 100.0;
-  else if (decimal == 3) decimal_multiplier = 1000.0;
-  else if (decimal == 4) decimal_multiplier = 10000.0;
-  else if (decimal == 5) decimal_multiplier = 100000.0;
+
+  // Decide which power of ten the measurement is in
+  if (decimal == 0)
+    decimal_multiplier = 1.0;
+  else if (decimal == 1)
+    decimal_multiplier = 10.0;
+  else if (decimal == 2)
+    decimal_multiplier = 100.0;
+  else if (decimal == 3)
+    decimal_multiplier = 1000.0;
+  else if (decimal == 4)
+    decimal_multiplier = 10000.0;
+  else if (decimal == 5)
+    decimal_multiplier = 100000.0;
 
   value = value / decimal_multiplier; // Set the decimal point
 
