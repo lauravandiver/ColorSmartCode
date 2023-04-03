@@ -59,3 +59,14 @@
 #define DIA_CLK_PIN 2
 #define DIA_DATA_PIN 52
 #define DIA_REQ_PIN 50
+
+#define thermoDO1 49
+#define thermoDO2 50
+#define thermoDO3 51
+#define thermoCLK 52
+#define thermoCS 53
+
+#define relay_1 23   // heaterband 1
+#define relay_2 25   // heaterband 2
+#define relay_3 27   // heaterband 3
+#define relay_4 29   // fans
