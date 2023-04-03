@@ -8,15 +8,6 @@
 #define thermoCLK = 52;
 #define thermoCS = 53;
 
-#define destemp1 = 20;
-#define destemp2 = destemp1 - 40;
-#define destemp3 = destemp2 - 60;
-#define temps[3] = [0, 0, 0];
-#define overshoot1 = 20;
-#define overshoot2 = 40;
-#define overshoot3 = 60;
-#define undershoot = 1;
-
 #define done = 0;
 
 // set up thermocouples
@@ -31,7 +22,26 @@ MAX6675 thermocouple3(thermoCLK, thermoCS, thermoDO3);
 #define relay_3 = 27;   // heaterband 3
 #define relay_4 = 29;   // fans
 
-void startExtruder() {
+int gettemp1() {
+  return thermocouple1.readCelsius();
+}
+
+int gettemp2() {
+  return thermocouple2.readCelsius();
+}
+int gettemp3() {
+  return thermocouple3.readCelsius();
+}
+
+void startExtruder(int destemp) {
+  static destemp1 = destemp;
+  static destemp2 = destemp1 - 40;
+  static destemp3 = destemp2 - 60;
+
+  static overshoot1 = 20;
+  static overshoot2 = 40;
+  static overshoot3 = 60;
+
   while (gettemp1() <(destemp1 - overshoot1)){
     digitalWrite(relay_1, LOW);
   }
@@ -44,18 +54,13 @@ void startExtruder() {
 //  }
 }
 
-int gettemp1() {
-  return thermocouple1.readCelsius();
-}
+void adjusttemps(int destemp){
+  static destemp1 = destemp;
+  static destemp2 = destemp1 - 40;
+  static destemp3 = destemp2 - 60;
 
-int gettemp2() {
-  return thermocouple2.readCelsius();
-}
-int gettemp3() {
-  return thermocouple3.readCelsius();
-}
+  static undershoot = 1;
 
-void adjusttemps(){
   // Adjust temp1
   if (gettemp1() <= (destemp1 + undershoot)){
     digitalWrite(relay_1, LOW);
