@@ -60,6 +60,9 @@
 #define DIA_DATA_PIN 52
 #define DIA_REQ_PIN 50
 
+// Message Ready pin bewteen pi and arduino
+#define PI2A_MSG_RDY_PIN 20
+
 #define thermoDO1 49
 #define thermoDO2 50
 #define thermoDO3 51
@@ -70,3 +73,6 @@
 #define relay_2 25   // heaterband 2
 #define relay_3 27   // heaterband 3
 #define relay_4 29   // fans
+
+// Message Ready pin bewteen pi and arduino
+#define PI2A_MSG_RDY_PIN 20
