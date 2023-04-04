@@ -73,6 +73,3 @@
 #define relay_2 25   // heaterband 2
 #define relay_3 27   // heaterband 3
 #define relay_4 29   // fans
-
-// Message Ready pin bewteen pi and arduino
-#define PI2A_MSG_RDY_PIN 20
