@@ -41,13 +41,7 @@ float indicatorReadMM() {
   float value;              // Finalized reading value
 
   digitalWrite(DIA_REQ_PIN, LOW); // Start data request
-  // attachInterrupt(
-  //     DIA_CLK_PIN,
-  //     [] () -> void {
-  //       digitalWrite(DIA_REQ_PIN, HIGH);
-  //       detachInterrupt(DIA_CLK_PIN);
-  //     },
-  //     FALLING);
+
   //  Read in the 13 incoming bytes
   for (i = 0; i < 13; i++) {
     in_byte = 0;
