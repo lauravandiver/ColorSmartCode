@@ -11,11 +11,11 @@
 #include <AccelStepper.h>
 
 // Distance of forward rotation
-#define FWD_DIST 400 // Steps, NOTE: 48 steps per rev.
+#define FWD_DIST 1000 // Steps, NOTE: 48 steps per rev.
 // Distance of backwards rotation
-#define BWD_DIST -100
+#define BWD_DIST -200
 
-#define V_MAX 5000  // Max velocity, Steps/sec
+#define V_MAX 1000  // Max velocity, Steps/sec
 #define ACCEL 25000 // Motor acceleration, steps/sec^2
 
 // Set up hoppers in Accel Stepper
