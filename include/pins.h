@@ -1,47 +1,47 @@
 #pragma once
 
-#define h1_STEP 28
-#define h1_DIR  29
+#define h1_STEP 52
+#define h1_DIR 46
 
-#define h2_STEP 14
-#define h2_DIR  15
+#define h2_STEP 53
+#define h2_DIR 48
 
-#define h3_STEP 16
-#define h3_DIR  17
+#define h3_STEP 28
+#define h3_DIR 50
 
-#define h4_STEP 18
-#define h4_DIR  19
+#define h4_STEP 33
+#define h4_DIR 29
 
-#define h5_STEP 20
-#define h5_DIR  21
+#define h5_STEP 32
+#define h5_DIR 30
 
-#define h6_STEP 22
-#define h6_DIR  23
+#define h6_STEP 26
+#define h6_DIR 23
 
-#define ALIGN_STEP_PIN 41
-#define ALIGN_DIR_PIN 39
-#define ALIGN_EN_PIN 38
-#define AL_CS_PIN 42
-#define AL_SW_MOSI 34
-#define AL_SW_MISO 35
-#define AL_SW_SCK 32
-#define AL_DIAG1 25
+#define ALIGN_STEP_PIN 38
+#define ALIGN_DIR_PIN 40
+#define ALIGN_EN_PIN 51
+#define AL_CS_PIN 41
+#define AL_SW_MOSI 37
+#define AL_SW_MISO 39
+#define AL_SW_SCK 35
+#define AL_DIAG1 27
 
-#define PULL_STEP_PIN 41
-#define PULL_DIR_PIN 39
-#define PULL_EN_PIN 38
-#define PU_CS_PIN 42
-#define PU_SW_MOSI 34
-#define PU_SW_MISO 35
-#define PU_SW_SCK 32
+#define PULL_STEP_PIN 36
+#define PULL_DIR_PIN 42
+#define PULL_EN_PIN 49
+#define PU_CS_PIN 43
+#define PU_SW_MOSI 37
+#define PU_SW_MISO 39
+#define PU_SW_SCK 35
 
-#define WIND_STEP_PIN 41
-#define WIND_DIR_PIN 39
-#define WIND_EN_PIN 38
-#define W_CS_PIN 42
-#define W_SW_MOSI 34
-#define W_SW_MISO 35
-#define W_SW_SCK 32
+#define WIND_STEP_PIN 34
+#define WIND_DIR_PIN 44
+#define WIND_EN_PIN 47
+#define W_CS_PIN 45
+#define W_SW_MOSI 37
+#define W_SW_MISO 39
+#define W_SW_SCK 35
 
 #define LCH1_DOUT_PIN 25
 #define LCH1_SCK_PIN 24
@@ -69,7 +69,7 @@
 #define thermoCLK 52
 #define thermoCS 53
 
-#define relay_1 23   // heaterband 1
-#define relay_2 25   // heaterband 2
-#define relay_3 27   // heaterband 3
-#define relay_4 29   // fans
+#define relay_1 23 // heaterband 1
+#define relay_2 25 // heaterband 2
+#define relay_3 27 // heaterband 3
+#define relay_4 29 // fans
