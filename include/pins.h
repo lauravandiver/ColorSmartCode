@@ -69,16 +69,16 @@
 #define thermoCLK 52
 #define thermoCS 53
 
-#define relay_1 23 // heaterband 1
-#define relay_2 25 // heaterband 2
-#define relay_3 27 // heaterband 3
-#define relay_4 29 // fans
+#define relay_1 A0 // Filament cooling fan
+#define relay_2 A8 // Extruder heatsink fan
+#define relay_3 A4 // Power case fan
+#define relay_4 29 // No connection
 
-//Shredder Pins
-#define SHRED_DIR 25          // Digital pin for direction of motor
-#define SHRED_PWM 3          // Shredder motor PWM driving signal
-#define SHRED_SAFETY 7        // Shredder safety switch
+// Shredder Pins
+#define SHRED_DIR 25   // Digital pin for direction of motor
+#define SHRED_PWM 3    // Shredder motor PWM driving signal
+#define SHRED_SAFETY 7 // Shredder safety switch
 
-//Extruder Pins
-#define EXTR_DIR 24          // Direction pin for the extruder motor
-#define EXTR_PWM 5           // Extruder motor PWM driving signal
+// Extruder Pins
+#define EXTR_DIR 24 // Direction pin for the extruder motor
+#define EXTR_PWM 5  // Extruder motor PWM driving signal

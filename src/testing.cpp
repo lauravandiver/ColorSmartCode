@@ -26,7 +26,6 @@ void setup() {
   shredInit();
 
   alignerHome();
-  startExtruder(60);
 }
 
 float diameter;            // Filament diameter measurement
@@ -49,6 +48,7 @@ void loop() {
   runHoppers(0b00111111);
   alignerRun();
   runShred();
+  startExtruder(60);
 
   // pullerRunSpeed((uint16_t)inputCmd.puller_speed);
   // winderRunSpeed((uint16_t)inputCmd.winder_speed);
