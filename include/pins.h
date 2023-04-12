@@ -73,3 +73,12 @@
 #define relay_2 25 // heaterband 2
 #define relay_3 27 // heaterband 3
 #define relay_4 29 // fans
+
+//Shredder Pins
+#define SHRED_DIR 25          // Digital pin for direction of motor
+#define SHRED_PWM 3          // Shredder motor PWM driving signal
+#define SHRED_SAFETY 7        // Shredder safety switch
+
+//Extruder Pins
+#define EXTR_DIR 24          // Direction pin for the extruder motor
+#define EXTR_PWM 5           // Extruder motor PWM driving signal
