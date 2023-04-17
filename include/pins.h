@@ -63,16 +63,23 @@
 // Message Ready pin bewteen pi and arduino
 #define PI2A_MSG_RDY_PIN 20
 
+// Thermocouple MAX Board Pins
 #define thermoDO1 49
 #define thermoDO2 50
 #define thermoDO3 51
 #define thermoCLK 52
 #define thermoCS 53
 
-#define relay_1 A0 // Filament cooling fan
-#define relay_2 A8 // Extruder heatsink fan
-#define relay_3 A4 // Power case fan
-#define relay_4 29 // No connection
+// Heaterband Relay Pins
+#define HB1_relay 9
+#define HB2_relay 10
+#define HB3_relay 11
+
+// Fan Relay Pins
+#define extrdFan_relay A0 // Filament cooling fan
+#define coolFan_relay A8 // Extruder heatsink fan
+#define eboxFan_relay A4 // Power case fan
+// #define relay_4 29 // No connection
 
 // Shredder Pins
 #define SHRED_DIR 25   // Digital pin for direction of motor
