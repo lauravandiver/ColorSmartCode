@@ -1,4 +1,6 @@
 #pragma once
+
+#include "Arduino.h"
 #include "pins.h"
 
 void fanControl(int state[]) {
@@ -7,18 +9,18 @@ void fanControl(int state[]) {
   static int fan3_status = state[3];
 
   if (fan1_status) {
-    digitalWrite(fanRelay_1, LOW);
+    digitalWrite(extrdFan_relay, LOW);
   } else {
-    digitalWrite(fanRelay_1, HIGH);
+    digitalWrite(extrdFan_relay, HIGH);
   }
   if (fan2_status) {
-    digitalWrite(fanRelay_2, LOW);
+    digitalWrite(coolFan_relay, LOW);
   } else {
-    digitalWrite(FanRelay_2, HIGH);
+    digitalWrite(coolFan_relay, HIGH);
   }
   if (fan3_status) {
-    digitalWrite(fanRelay_3, LOW);
+    digitalWrite(eboxFan_relay, LOW);
   } else {
-    digitalWrite(fanRelay_3, HIGH);
+    digitalWrite(eboxFan_relay, HIGH);
   }
 }
