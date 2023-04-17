@@ -26,6 +26,7 @@
 #define AL_SW_MISO 39
 #define AL_SW_SCK 35
 #define AL_DIAG1 27
+#define AL_HOME_SW 27
 
 #define PULL_STEP_PIN 36
 #define PULL_DIR_PIN 42
