@@ -1,8 +1,9 @@
-#pragma once
 // Set up thermocouples
 
 #include "MAX6675.h"
 #include "pins.h"
+
+#pragma once
 
 // set up thermocouples
 MAX6675 thermocouple1(thermoCLK1, thermoCS1, thermoDO1);
