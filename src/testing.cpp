@@ -1,5 +1,6 @@
 #include "aligner.h"
 #include "digitalIndicator.h"
+#include "fanControl.h"
 #include "hopperStepper.h"
 #include "loadcell.h"
 #include "piArduinoComm.h"
@@ -14,18 +15,27 @@ void setup() {
   while (!Serial)
     ;
 
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
+  pinMode(extrdFan_relay, OUTPUT);
+  pinMode(coolFan_relay, OUTPUT);
+  pinMode(eboxFan_relay, OUTPUT);
+
   // Initalize subsystems
   // loadcellInit();
   // indicatorInit();
-  alignerInit();
+  // alignerInit();
+  digitalWrite(LED_BUILTIN, LOW);
   hoppersInit();
-  // pullerInit();
-  // winderInit();
-  shredInit();
-  fanControl(1);
+  pullerInit();
+  int fanstat[3] = {1, 1, 1};
+  winderInit();
+  fanControl(fanstat);
   shredInit();
 
-  alignerHome();
+  delay(100);
+
+  // alignerHome();
 }
 
 float diameter;            // Filament diameter measurement
@@ -36,28 +46,28 @@ uint16_t wind_speed = 100; // Winder speed to be set
 Pi2A inputCmd;             // Command structure recieved from Pi
 A2Pi outReport;            // Report structure to be sent to Pi
 
+uint8_t hopper = 0b00000001;
+
+uint32_t tlast_time = 0;
+uint32_t tms = millis();
+
 void loop() {
 
-  //   if (digitalRead(PI2A_MSG_RDY_PIN)) {
-  //     // Read in Pi's command data
-  //     readSer2Struct(&inputCmd);
-  //     // Send report to pi
-  //     printStruct2Ser(outReport);
-  //   }
+  runHoppers(hopper);
+  // Serial.println(hopper, BIN);
 
-  runHoppers(0b00111111);
-  alignerRun();
-  runShred();
-  startExtruder(60);
+  tms = millis();
+  if (tms - tlast_time > 5000) {
+    hopper = hopper << 1;
+    tlast_time = tms;
+    if (hopper >= 0b01000000)
+      hopper = 0b00000001;
+  }
 
-  // pullerRunSpeed((uint16_t)inputCmd.puller_speed);
-  // winderRunSpeed((uint16_t)inputCmd.winder_speed);
-
-  // diameter = indicatorReadMM();
-
-  //   for (int i; i < 6; i++) {
-  //     outReport.loadcells[i] = readLoadCell(i);
-  //   }
-
-  // outReport.diameter = (int)(100 * diameter);
+  // alignerRun();
+  // winderRunSpeed(1000);
+  // pullerRunSpeed(5000);
+  // bool safe = runShred();
+  // Serial.println(safe);
+  //  startExtruder(60);
 }

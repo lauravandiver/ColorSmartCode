@@ -16,7 +16,7 @@
 #define h5_DIR 30
 
 #define h6_STEP 26
-#define h6_DIR 23
+#define h6_DIR 31
 
 #define ALIGN_STEP_PIN 38
 #define ALIGN_DIR_PIN 40
@@ -77,8 +77,8 @@
 
 // Fan Relay Pins
 #define extrdFan_relay A0 // Filament cooling fan
-#define coolFan_relay A8 // Extruder heatsink fan
-#define eboxFan_relay A4 // Power case fan
+#define coolFan_relay A8  // Extruder heatsink fan
+#define eboxFan_relay A4  // Power case fan
 // #define relay_4 29 // No connection
 
 // Shredder Pins
