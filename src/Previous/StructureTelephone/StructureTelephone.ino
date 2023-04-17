@@ -15,26 +15,35 @@ void setup() {
 }
 
 void loop() {
-  if(callLineIn){                                          // Ri2A
+
+
+while(!digitalRead(callLineIn)) {
+  yield();
+}
+  
     for (unsigned int i = 0; i < 6; i++) {                 // Read In message from Pi
     ((unsigned char *)messageIn)[i] = (byte)Serial.read();
-    }              
-  }
+    }  
 
-  if(outgoingCall){                                        // A2Pi
-    digitalWrite(callLineOut, HIGH);                       // Call Pi
+    
     for (unsigned int i = 0; i < sizeof(A2Pi); i++) {      // Send Pi Struct
     Serial.write(((unsigned char *)&A2Pi)[i]);
-    }
-    digitalWrite(callLineOut, LOW);                       // Stop Call to Pi
-  }
+    }            
   
-  if(outgoingCall == 2){
-    outgoingCall = 0;
-  }
-  else{
-    outgoingCall += 1;
+  while(digitalRead(callLineIn)) {
+    yield();
   }
 
-  delay(5000);
+  //if(outgoingCall){                                        // A2Pi
+  //  digitalWrite(callLineOut, HIGH);                       // Call Pi
+  //  
+  //  digitalWrite(callLineOut, LOW);                       // Stop Call to Pi
+  //}
+  
+  //if(outgoingCall == 2){
+  //  outgoingCall = 0;
+  //}
+  //else{
+  //  outgoingCall += 1;
+  //}
 }
