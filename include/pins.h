@@ -65,11 +65,15 @@
 #define PI2A_MSG_RDY_PIN 20
 
 // Thermocouple MAX Board Pins
-#define thermoDO1 49
-#define thermoDO2 50
-#define thermoDO3 51
-#define thermoCLK 52
-#define thermoCS 53
+#define thermoDO1 22
+#define thermoDO2 23
+#define thermoDO3 27
+#define thermoCLK1 14
+#define thermoCS1 15
+#define thermoCLK2 16
+#define thermoCS2 17
+#define thermoCLK3 A14
+#define thermoCS3 A10
 
 // Heaterband Relay Pins
 #define HB1_relay 9
