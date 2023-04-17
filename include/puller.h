@@ -32,7 +32,6 @@ void pullerInit(void){
   pinMode(PU_SW_MISO, INPUT_PULLUP);
   digitalWrite(PULL_EN_PIN, LOW);
 
-  SPI.begin();
   delay(50);
 
   // TMC driver parameter setup
