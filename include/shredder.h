@@ -34,6 +34,7 @@ bool runShred() {
   static int max_speed = 175;
 
   static int direction = 1;
+  static bool toggle = 0;
 
   if (!digitalRead(SHRED_SAFETY)) {
     currentTime = millis();
@@ -57,14 +58,26 @@ bool runShred() {
       if (pwm_value > 0) {
         pwm_value = pwm_value - 5; // Run at full speed
       }
-
+      else if((pwm_value == 0) && (digitalRead(SHRED_DIR) == LOW) && !toggle){
+        digitalWrite(SHRED_DIR, HIGH);
+        toggle = 1;
+      }
+      else if((pwm_value == 0) && (digitalRead(SHRED_DIR) == HIGH) && !toggle){
+        digitalWrite(SHRED_DIR, LOW);
+        toggle = 1;
+      }
+      
       analogWrite(SHRED_PWM, pwm_value); // Set PWM value
 
       if (currentTime - runTime >= neutralTime) {
         if (digitalRead(SHRED_DIR) == HIGH) {
-          direction = 0;
-        } else if (digitalRead(SHRED_DIR) == LOW) {
           direction = 1;
+          digitalWrite(SHRED_PWM, LOW);
+          toggle = 0;
+        } else if (digitalRead(SHRED_DIR) == LOW) {
+          direction = 0;
+          digitalWrite(SHRED_PWM, LOW);
+          toggle = 0;
         }
         // direction = 1;
         runTime = currentTime;
