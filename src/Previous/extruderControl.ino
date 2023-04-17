@@ -1,12 +1,13 @@
 // Set up thermocouples
 
 #include "max6675.h"
+#include "pins.h"
 
-int thermoDO1 = 49;
-int thermoDO2 = 50;
-int thermoDO3 = 51;
-int thermoCLK = 52;
-int thermoCS = 53;
+//int thermoDO1 = 49;
+//int thermoDO2 = 50;
+//int thermoDO3 = 51;
+//int thermoCLK = 52;
+//int thermoCS = 53;
 
 int destemp1 = 20;
 int destemp2 = destemp1 - 40;
@@ -27,16 +28,16 @@ MAX6675 thermocouple3(thermoCLK, thermoCS, thermoDO3);
 
 // Set up heaterband relays
 
-int relay_1 = 23;   // heaterband 1
-int relay_2 = 25;   // heaterband 2
-int relay_3 = 27;   // heaterband 3
-int relay_4 = 29;   // fans
+//int relay_1 = 23;   // heaterband 1
+//int relay_2 = 25;   // heaterband 2
+//int relay_3 = 27;   // heaterband 3
+//int relay_4 = 29;   // fans
 
 void setup() {
   Serial.begin(9600);
 
-  Serial.println("\nExtruder Test with one heaterband and thermocouple");
-  Serial.println("Heating Up");
+  //Serial.println("\nExtruder Test with one heaterband and thermocouple");
+  //Serial.println("Heating Up");
 
   pinMode(relay_1, OUTPUT);
   pinMode(relay_2, OUTPUT);
