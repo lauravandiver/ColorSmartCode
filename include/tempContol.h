@@ -63,7 +63,7 @@ bool startExtruder(int destemp) {
 void adjusttemps(int destemp) {
   static int destemp1 = destemp;
   static int destemp2 = destemp1 - 40;
-  static int destemp3 = destemp2 - 60;
+  // static int destemp3 = destemp2 - 60;
 
   static int undershoot = 1;
 
@@ -90,9 +90,13 @@ void adjusttemps(int destemp) {
 
 void fanControl(int state) {
   if (state) {
+    digitalWrite(relay_1, LOW);
     digitalWrite(relay_2, LOW);
+    digitalWrite(relay_3, LOW);
   } else {
+    digitalWrite(relay_1, HIGH);
     digitalWrite(relay_2, HIGH);
+    digitalWrite(relay_3, HIGH);
   }
 }
 
