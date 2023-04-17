@@ -5,9 +5,9 @@
 #include "pins.h"
 
 // set up thermocouples
-MAX6675 thermocouple1(thermoCLK, thermoCS, thermoDO1);
-MAX6675 thermocouple2(thermoCLK, thermoCS, thermoDO2);
-MAX6675 thermocouple3(thermoCLK, thermoCS, thermoDO3);
+MAX6675 thermocouple1(thermoCLK1, thermoCS1, thermoDO1);
+MAX6675 thermocouple2(thermoCLK2, thermoCS2, thermoDO2);
+MAX6675 thermocouple3(thermoCLK3, thermoCS3, thermoDO3);
 
 int gettemp1() { return thermocouple1.readCelsius(); }
 int gettemp2() { return thermocouple2.readCelsius(); }
