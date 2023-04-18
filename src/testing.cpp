@@ -22,9 +22,9 @@ void setup() {
   pinMode(eboxFan_relay, OUTPUT);
 
   // Initalize subsystems
-  // loadcellInit();
+  loadcellInit();
   // indicatorInit();
-  // alignerInit();
+  alignerInit();
   digitalWrite(LED_BUILTIN, LOW);
   hoppersInit();
   pullerInit();
@@ -35,7 +35,7 @@ void setup() {
 
   delay(100);
 
-  // alignerHome();
+  alignerHome();
 }
 
 float diameter;            // Filament diameter measurement
@@ -53,21 +53,22 @@ uint32_t tms = millis();
 
 void loop() {
 
+  //Serial.println(micros());
   runHoppers(hopper);
-  // Serial.println(hopper, BIN);
 
   tms = millis();
-  if (tms - tlast_time > 5000) {
-    hopper = hopper << 1;
+  if(tms-tlast_time > 10000){
+    hopper = hopper<<1;
     tlast_time = tms;
-    if (hopper >= 0b01000000)
+    if(hopper > 0b00100000){
       hopper = 0b00000001;
+    }
   }
 
-  // alignerRun();
-  // winderRunSpeed(1000);
-  // pullerRunSpeed(5000);
-  // bool safe = runShred();
-  // Serial.println(safe);
+  alignerRun();
+  winderRunSpeed(1000);
+  pullerRunSpeed(5000);
+  bool safe = runShred();
+  //Serial.println(safe);
   //  startExtruder(60);
 }

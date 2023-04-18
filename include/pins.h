@@ -67,7 +67,7 @@
 // Thermocouple MAX Board Pins
 #define thermoDO1 22
 #define thermoDO2 23
-#define thermoDO3 27
+#define thermoDO3 2
 #define thermoCLK1 14
 #define thermoCS1 15
 #define thermoCLK2 16

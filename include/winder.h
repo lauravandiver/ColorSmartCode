@@ -40,7 +40,7 @@ void winderInit(void) {
   winder.begin();
   winder.toff(4);
   winder.blank_time(24);
-  winder.rms_current(700); // mA
+  winder.rms_current(900); // mA
   // winder.en_pwm_mode(true);      // Enable extremely quiet stepping
   // winder.pwm_autoscale(true);
   winder.microsteps(16);
