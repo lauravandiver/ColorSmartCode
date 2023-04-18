@@ -57,12 +57,12 @@
 #define LCH6_DOUT_PIN A1
 #define LCH6_SCK_PIN A12
 
-#define DIA_CLK_PIN 2
-#define DIA_DATA_PIN 52
-#define DIA_REQ_PIN 50
+#define DIA_CLK_PIN 18
+#define DIA_DATA_PIN 20
+#define DIA_REQ_PIN 19
 
 // Message Ready pin bewteen pi and arduino
-#define PI2A_MSG_RDY_PIN 20
+#define PI2A_MSG_RDY_PIN A2
 
 // Thermocouple MAX Board Pins
 #define thermoDO1 22
