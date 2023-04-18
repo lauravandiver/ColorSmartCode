@@ -44,18 +44,18 @@
 #define W_SW_MISO 39
 #define W_SW_SCK 35
 
-#define LCH1_DOUT_PIN 25
-#define LCH1_SCK_PIN 24
-#define LCH2_DOUT_PIN 34
-#define LCH2_SCK_PIN 34
-#define LCH3_DOUT_PIN 34
-#define LCH3_SCK_PIN 34
-#define LCH4_DOUT_PIN 34
-#define LCH4_SCK_PIN 34
-#define LCH5_DOUT_PIN 34
-#define LCH5_SCK_PIN 34
-#define LCH6_DOUT_PIN 34
-#define LCH6_SCK_PIN 34
+#define LCH1_DOUT_PIN A13
+#define LCH1_SCK_PIN A12
+#define LCH2_DOUT_PIN A5
+#define LCH2_SCK_PIN A12
+#define LCH3_DOUT_PIN 4
+#define LCH3_SCK_PIN A12
+#define LCH4_DOUT_PIN 6
+#define LCH4_SCK_PIN A12
+#define LCH5_DOUT_PIN A9
+#define LCH5_SCK_PIN A12
+#define LCH6_DOUT_PIN A1
+#define LCH6_SCK_PIN A12
 
 #define DIA_CLK_PIN 2
 #define DIA_DATA_PIN 52
