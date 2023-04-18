@@ -19,7 +19,7 @@ void shredInit() {
   pinMode(SHRED_SAFETY, INPUT_PULLUP);
 
   // Set PWM on pins 2, 3, 5, to ~31000 Hz
-  TCCR3B = TCCR3B & (B11111000 | B00000001);
+  TCCR3B = TCCR3B & B11111000 | B00000001;
 
 } // shredInit()
 
@@ -30,6 +30,7 @@ bool runShred() {
   static unsigned long forwardTime = 1000;
   static unsigned long reverseTime = 7000;
   static unsigned long neutralTime = 1000;
+  static unsigned long rampTime = 0;
 
   static int max_speed = 175;
 
@@ -40,7 +41,7 @@ bool runShred() {
     currentTime = millis();
     if (direction == 1) {
 
-      digitalWrite(SHRED_DIR, HIGH);
+      // digitalWrite(SHRED_DIR, HIGH);
 
       if (pwm_value < max_speed) {
         pwm_value = pwm_value + 5;
@@ -55,18 +56,22 @@ bool runShred() {
 
     } else if (direction == -1) {
 
-      if (pwm_value > 0) {
+      if ((pwm_value > 0) && ((currentTime - rampTime >= 10))) {
         pwm_value = pwm_value - 5; // Run at full speed
+        rampTime = currentTime;
       }
-      else if((pwm_value == 0) && (digitalRead(SHRED_DIR) == LOW) && !toggle){
-        digitalWrite(SHRED_DIR, HIGH);
-        toggle = 1;
+
+      if (currentTime - runTime >= neutralTime / 2) {
+
+        if ((pwm_value == 0) && (digitalRead(SHRED_DIR) == LOW) && !toggle) {
+          digitalWrite(SHRED_DIR, HIGH);
+          toggle = 1;
+        } else if ((pwm_value == 0) && (digitalRead(SHRED_DIR) == HIGH) &&
+                   !toggle) {
+          digitalWrite(SHRED_DIR, LOW);
+          toggle = 1;
+        }
       }
-      else if((pwm_value == 0) && (digitalRead(SHRED_DIR) == HIGH) && !toggle){
-        digitalWrite(SHRED_DIR, LOW);
-        toggle = 1;
-      }
-      
       analogWrite(SHRED_PWM, pwm_value); // Set PWM value
 
       if (currentTime - runTime >= neutralTime) {
@@ -87,7 +92,7 @@ bool runShred() {
     } else if (direction == 0) {
       // Begin reverse direction
 
-      digitalWrite(SHRED_DIR, LOW); // Set direction to reverse
+      // digitalWrite(SHRED_DIR, LOW); // Set direction to reverse
 
       if (pwm_value < max_speed) {
         pwm_value = pwm_value + 5;
