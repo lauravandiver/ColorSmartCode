@@ -19,7 +19,7 @@ void shredInit() {
   pinMode(SHRED_SAFETY, INPUT_PULLUP);
 
   // Set PWM on pins 2, 3, 5, to ~31000 Hz
-  TCCR3B = TCCR3B & B11111000 | B00000001;
+  TCCR3B = TCCR3B & (B11111000 | B00000001);
 
 } // shredInit()
 
