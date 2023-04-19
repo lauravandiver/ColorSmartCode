@@ -56,7 +56,7 @@ uint32_t tms = millis();
 
 void loop() {
 
-  
+  runHoppers(0b00010000);
 
   tms = millis();
   // if(tms-tlast_time > 10000){
@@ -67,33 +67,33 @@ void loop() {
   //   }
   // }
 
-  alignerRun();
-  winderRunSpeed(1000);
-  pullerRunSpeed(5000);
-  // bool safe = runShred();
+  // alignerRun();
+  // winderRunSpeed(1000);
+  // pullerRunSpeed(5000);
+  bool safe = runShred();
 
-  if (temp_ready == false) {
-    temp_ready = startExtruder(190);
-    runHoppers(0b00000000);
-    extrudeStop();
-  } else {
-    adjusttemps(190);
-    runHoppers(0b00000000);
-    extrudeRun();
-  }
+  // if (temp_ready == false) {
+  //   temp_ready = startExtruder(190);
+  //   runHoppers(0b00000000);
+  //   extrudeStop();
+  // } else {
+  //   adjusttemps(190);
+  //   runHoppers(0b00000000);
+  //   extrudeRun();
+  // }
 
   //int t1 = thermocouple1.readCelsius();
 
-  if (tms - tlast_time > 1000) {
-    if(temp_ready){Serial.print("A");}
-    Serial.print("Zone 1: ");
-    Serial.print(gettemp1());
-    Serial.print("C;  Zone 2: ");
-    Serial.print(gettemp2());
-    Serial.print("C;  Zone 3: ");
-    Serial.print(gettemp3());
-    Serial.println("C;");
-    Serial.println();
-    tlast_time = tms;
-  }
+  // if (tms - tlast_time > 1000) {
+  //   if(temp_ready){Serial.print("A");}
+  //   Serial.print("Zone 1: ");
+  //   Serial.print(gettemp1());
+  //   Serial.print("C;  Zone 2: ");
+  //   Serial.print(gettemp2());
+  //   Serial.print("C;  Zone 3: ");
+  //   Serial.print(gettemp3());
+  //   Serial.println("C;");
+  //   Serial.println();
+  //   tlast_time = tms;
+  // }
 }
