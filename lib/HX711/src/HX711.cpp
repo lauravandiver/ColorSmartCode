@@ -83,9 +83,9 @@ void HX711::begin(byte dout, byte pd_sck, byte gain) {
   pinMode(PD_SCK, OUTPUT);
   pinMode(DOUT, DOUT_MODE);
 
-  bool ready = wait_ready_timeout(500, 50);
-  if (!ready)
-    return;
+  // bool ready = wait_ready_timeout(500, 50);
+  // if (!ready)
+  //   return;
 
   set_gain(gain);
 }
@@ -109,9 +109,9 @@ void HX711::set_gain(byte gain) {
 long HX711::read() {
 
   // Wait for the chip to become ready, with timeout.
-  bool ready = wait_ready_timeout(50, 10);
-  if (!ready)
-    return -1;
+  // bool ready = wait_ready_timeout(50, 10);
+  // if (!ready)
+  //   return -1;
   // Define structures for reading data into.
   unsigned long value = 0;
   uint8_t data[3] = {0};
@@ -237,8 +237,8 @@ long HX711::read() {
   long HX711::read_average(byte times) {
     long sum = 0;
 
-    if (!wait_ready_timeout(50, 10))
-      return -1;
+    // if (!wait_ready_timeout(50, 10))
+    //   return -1;
 
     for (byte i = 0; i < times; i++) {
       sum += read();
@@ -252,8 +252,8 @@ long HX711::read() {
   double HX711::get_value(byte times) { return read_average(times) - OFFSET; }
 
   float HX711::get_units(byte times) {
-    if (!wait_ready_timeout(500, 50))
-      return -1;
+    // if (!wait_ready_timeout(500, 50))
+    //   return -1;
     return get_value(times) / SCALE;
   }
 
