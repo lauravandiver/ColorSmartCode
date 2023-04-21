@@ -37,7 +37,8 @@ void alignerInit(void) {
   pinMode(ALIGN_STEP_PIN, OUTPUT);
   pinMode(ALIGN_DIR_PIN, OUTPUT);
   pinMode(AL_SW_MISO, INPUT_PULLUP);
-  pinMode(AL_DIAG1, INPUT_PULLUP);
+  //pinMode(AL_DIAG1, INPUT_PULLUP);
+  pinMode(AL_HOME_SW, INPUT_PULLUP);
   digitalWrite(ALIGN_EN_PIN, LOW);
 
   delay(50);
@@ -57,8 +58,8 @@ void alignerInit(void) {
   aligner.semin(5);
   aligner.semax(2);
   aligner.sedn(0b01);
-  aligner.diag1_stall(1); // Enable active low ouptut of Diag1 when stalled
-  aligner.sgt(STALL_VALUE);
+  // aligner.diag1_stall(1); // Enable active low ouptut of Diag1 when stalled
+  // aligner.sgt(STALL_VALUE);
 
   // AccelStepper init
   // as_aligner.setEnablePin(ALIGN_EN_PIN);
@@ -73,47 +74,35 @@ void alignerInit(void) {
 } // alignerInit
 
 bool alignerHome(void) {
-  uint32_t last_time = 0;
-  uint32_t ms = millis();
+  // uint32_t last_time = 0;
+  // uint32_t ms = millis();
   as_aligner.setSpeed(AL_HOME_SPEED);
-  // DRV_STATUS_t drv_status{0};
 
   do {
     // digitalWrite(ALIGN_EN_PIN, LOW);
     as_aligner.runSpeed();
 
-    ms = millis();
-    if ((ms - last_time) > 500) { // run every 0.1s
-      last_time = ms;
-      DRV_STATUS_t drv_status{0};
-      drv_status.sr = aligner.DRV_STATUS();
-      Serial.print(as_aligner.speed(), DEC);
-      Serial.print(" ");
-      Serial.print(digitalRead(AL_DIAG1));
-      Serial.print(" ");
-      Serial.print(drv_status.sg_result, DEC);
-      Serial.print(" ");
-      Serial.print(aligner.cs2rms(drv_status.cs_actual), DEC);
-      Serial.print(" ");
-      Serial.println(digitalRead(ALIGN_EN_PIN));
-    }
-    digitalWrite(LED_BUILTIN, HIGH);
-  } while (digitalRead(AL_DIAG1) == 1);
+    // ms = millis();
+    // if ((ms - last_time) > 500) { // run every 0.1s
+    //   last_time = ms;
+    //   DRV_STATUS_t drv_status{0};
+    //   drv_status.sr = aligner.DRV_STATUS();
+    //   Serial.print(as_aligner.speed(), DEC);
+    //   Serial.print(" ");
+    //   Serial.print(digitalRead(AL_DIAG1));
+    //   Serial.print(" ");
+    //   Serial.print(drv_status.sg_result, DEC);
+    //   Serial.print(" ");
+    //   Serial.print(aligner.cs2rms(drv_status.cs_actual), DEC);
+    //   Serial.print(" ");
+    //   Serial.println(digitalRead(ALIGN_EN_PIN));
+    // }
+    // digitalWrite(LED_BUILTIN, HIGH);
+  } while (digitalRead(AL_HOME_SW) == 0);
 
   as_aligner.stop();
   as_aligner.setCurrentPosition(0);
-  Serial.println("Homed!");
-  // DRV_STATUS_t drv_status{0};
-  // drv_status.sr = aligner.DRV_STATUS();
-  // Serial.print(as_aligner.speed(), DEC);
-  // Serial.print(" ");
-  // Serial.print(digitalRead(AL_DIAG1));
-  // Serial.print(" ");
-  // Serial.print(drv_status.sg_result, DEC);
-  // Serial.print(" ");
-  // Serial.print(aligner.cs2rms(drv_status.cs_actual), DEC);
-  // Serial.print(" ");
-  // Serial.println(digitalRead(ALIGN_EN_PIN));
+  //Serial.println("Homed!");
 
   digitalWrite(ALIGN_EN_PIN, HIGH);
   as_aligner.setSpeed(AL_OP_SPEED);

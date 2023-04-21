@@ -13,9 +13,9 @@
 // Distance of forward rotation
 #define FWD_DIST -3600 // Steps, NOTE: 3200 steps per rev.
 // Distance of backwards rotation
-#define BWD_DIST 1600
+#define BWD_DIST 800
 
-#define V_MAX 3200  // Max velocity, Steps/sec
+#define V_MAX 6400  // Max velocity, Steps/sec
 #define ACCEL 250000 // Motor acceleration, steps/sec^2
 
 // Set up hoppers in Accel Stepper
@@ -98,9 +98,9 @@ void runHoppers(uint8_t Select) {
 
   if (hopper4.distanceToGo() == 0 && ((Select & (0b00001000)) > 0)) {
     if (h4_D) {
-      hopper4.move(BWD_DIST);
+      hopper4.move(-BWD_DIST);
     } else {
-      hopper4.move(FWD_DIST);
+      hopper4.move(-FWD_DIST);
     }
     h4_D = !h4_D;
   } else if ((Select & (0b00001000)) == 0) {
@@ -122,9 +122,9 @@ void runHoppers(uint8_t Select) {
 
   if (hopper6.distanceToGo() == 0 && ((Select & (0b00100000)) > 0)) {
     if (h6_D) {
-      hopper6.move(BWD_DIST);
+      hopper6.move(-BWD_DIST);
     } else {
-      hopper6.move(FWD_DIST);
+      hopper6.move(-FWD_DIST);
     }
     h6_D = !h6_D;
   } else if ((Select & (0b00100000)) == 0) {

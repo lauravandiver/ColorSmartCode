@@ -65,12 +65,12 @@ float indicatorReadMM() {
   } // Data stream loop
   digitalWrite(DIA_REQ_PIN, HIGH);
 
-  Serial.print("0x");
-  for (int i = 0; i < 14; ++i) {
+  // Serial.print("0x");
+  // for (int i = 0; i < 14; ++i) {
 
-    Serial.print(in_data[i], 16);
-  }
-  Serial.println();
+  //   Serial.print(in_data[i], 16);
+  // }
+  // Serial.println();
 
   sign = in_data[4];     // Separate the sign byte
   units = in_data[12];   // Separate the units byte
