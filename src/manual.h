@@ -28,7 +28,7 @@ void loop() {
     Serial.println();
 
     if (temp == 'r') {
-      weight = readLoadCell(1);
+      weight = readLoadCell(4);
       Serial.print("Reading: ");
       Serial.print(weight);
       Serial.print(" grams");

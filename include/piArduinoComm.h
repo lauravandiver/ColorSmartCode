@@ -9,36 +9,23 @@
 
 #include <Arduino.h>
 
-// Arduino to Pi data structure
-typedef struct {
-  int loadcells[6];   // Values of load cells (g)
-  int temperature[3]; // Values from thermocouples (C)
-  int diameter;       // Value read from indiactor (mm*100)
-  bool shred_status;  // State of shredder safety
-} A2Pi;
+// PI2A
+String messageIn = "";
+String sfr_mode = ""; // s for shred, r for recycle
+String run_shredder =
+    ""; // Shredder control (off = 0, on foward = 1, on reverse = 2)
+String set_temperature =
+    "";                 // Desired set point temperature (C) (three numbers)
+String set_hopper = ""; // Hopper selection variable (one number)
 
-// Pi to Arduino data structure
-typedef struct {
-  int set_temperature; // Desired set point temperature (C)
-  int puller_speed;    // Requested puller speed
-  int winder_speed;    // Requested winder speed
-  int hopper_select;   // Hopper selection variable
-  int run_shredder;    // Shredder on/off
-  int run_aligner;     // Aligner on/off
-} Pi2A;
-
-void printStruct2Ser(A2Pi s) {
-  for (unsigned int i = 0; i < sizeof(A2Pi); i++) {
-    Serial.write(((unsigned char *)&s)[i]);
-  }
-}
-
-bool readSer2Struct(Pi2A *s) {
-  if (!Serial.available()) {
-    return false;
-  }
-  for (unsigned int i = 0; i < sizeof(Pi2A); i++) {
-    ((unsigned char *)s)[i] = (byte)Serial.read();
-  }
-  return true;
-}
+// A2PI
+String messageOut = "";
+String loadcell1 = ""; // Values of load cells (g) (three numbers)
+String loadcell2 = ""; // Values of load cells (g) (three numbers)
+String loadcell3 = ""; // Values of load cells (g) (three numbers)
+String loadcell4 = ""; // Values of load cells (g) (three numbers)
+String loadcell5 = ""; // Values of load cells (g) (three numbers)
+String loadcell6 = ""; // Values of load cells (g) (three numbers)
+String temp1 = "";     // Values from thermocouples (C) (three numbers)
+String temp2 = "";     // Values from thermocouples (C) (three numbers)
+String temp3 = "";     // Values from thermocouples (C) (three numbers)

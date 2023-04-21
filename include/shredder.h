@@ -114,3 +114,23 @@ bool runShred() {
   return digitalRead(SHRED_SAFETY);
 
 } // runShred()
+
+void shredStop() { 
+  static unsigned long currentTime = 0;
+  static unsigned long rampTime = 0;
+  currentTime = millis();
+  if ((pwm_value > 0) && ((currentTime - rampTime >= 10))) {
+        pwm_value = pwm_value - 5; // Run at full speed
+        rampTime = currentTime;
+      }
+  if(pwm_value <= 0){
+    digitalWrite(SHRED_PWM, 0); } // shredStop()
+  }
+  
+
+void reverseShred() {
+  shredStop();
+  digitalWrite(SHRED_DIR, HIGH);
+  analogWrite(SHRED_PWM, 100);
+
+} // reverseShred()

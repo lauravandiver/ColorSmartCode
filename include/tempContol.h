@@ -46,28 +46,31 @@ bool startExtruder(int destemp) {
   static unsigned long lastTime = 0;
   static unsigned long currentTime = 0;
 
-  int t1, t2, t3;
+  int t1;
+  int t2;
+  //int t3;
 
   currentTime = millis();
   if ((currentTime - lastTime) >= 250) {
     t1 = gettemp1();
     t2 = gettemp2();
-    t3 = gettemp3();
+    //t3 = gettemp3();
     lastTime = currentTime;
   }
 
-  if (t1 < (destemp1 - overshoot1) && !zone1_done) {
+  if ((t1 < (destemp1 - overshoot1)) && !zone1_done) {
     digitalWrite(HB1_relay, HIGH);
   } else if (t1 >= (destemp1 - overshoot1)) {
-    zone1_done = true;
     digitalWrite(HB1_relay, LOW);
+    zone1_done = true;
   }
 
-  if (t2 < (destemp2 - overshoot2) && (zone1_done && !zone2_done)) {
+  if ((t2 < (destemp2 - overshoot2)) && (zone1_done && !zone2_done)) {
     digitalWrite(HB2_relay, HIGH);
   } else if (t2 >= (destemp2 - overshoot2)) {
-    zone2_done = true;
     digitalWrite(HB2_relay, LOW);
+    zone2_done = true;
+    
   }
 
   // if (t3 < (destemp3 - overshoot3) &&
@@ -102,13 +105,15 @@ void adjusttemps(int destemp) {
   static unsigned long lastTime = 0;
   static unsigned long currentTime = 0;
 
-  int t1, t2, t3;
+  int t1;
+  int t2;
+  //int t3;
 
   currentTime = millis();
   if ((currentTime - lastTime) >= 250) {
     t1 = gettemp1();
     t2 = gettemp2();
-    t3 = gettemp3();
+    //t3 = gettemp3();
     lastTime = currentTime;
   }
 
