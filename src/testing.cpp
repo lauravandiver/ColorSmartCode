@@ -55,15 +55,13 @@ void loop() {
 
   if (Serial.available() > 0) {
     messageIn = Serial.readStringUntil('\n');
-    Serial.print("You sent me: ");
-    Serial.println(messageIn);
+    // Serial.print("You sent me: ");
+    // Serial.println(messageIn);
     sfr_mode = messageIn[0];
     run_shredder = messageIn[1];
     set_temperature = messageIn[2] + messageIn[3] + messageIn[4];
     set_hopper = messageIn[5] + messageIn[6] + messageIn[7] + messageIn[8] + messageIn[9] + messageIn[10];
-    String dataIn = sfr_mode + run_shredder + set_temperature + set_hopper;
-    Serial.print("I translated it to: ");
-    Serial.println(dataIn);
+    // Serial.println(set_hopper);  // these serial.print statements aren't working
   }
 
   if (sfr_mode == "s") {
