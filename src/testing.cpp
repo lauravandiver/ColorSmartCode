@@ -13,8 +13,7 @@
 
 void setup() {
   Serial.begin(115200);
-  while (!Serial)
-    ;
+  while (!Serial);
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
@@ -46,7 +45,8 @@ uint16_t wind_speed = 100; // Winder speed to be set
 bool temp_ready = false;
 bool safe;
 int run_shred = 0;
-uint8_t hopper = 0b00000001;
+int destemp = 0;
+uint8_t hopper = 0b00000000;
 uint32_t tlast_time = 0;
 uint32_t last_time = 0;
 uint32_t tms = millis();
@@ -55,12 +55,15 @@ void loop() {
 
   if (Serial.available() > 0) {
     messageIn = Serial.readStringUntil('\n');
-    // Serial.print("You sent me: ");
-    // Serial.println(messageIn);
+    Serial.print("You sent me: ");
+    Serial.println(messageIn);
     sfr_mode = messageIn[0];
     run_shredder = messageIn[1];
     set_temperature = messageIn[2] + messageIn[3] + messageIn[4];
-    set_hopper = messageIn[5];
+    set_hopper = messageIn[5] + messageIn[6] + messageIn[7] + messageIn[8] + messageIn[9] + messageIn[10];
+    String dataIn = sfr_mode + run_shredder + set_temperature + set_hopper;
+    Serial.print("I translated it to: ");
+    Serial.println(dataIn);
   }
 
   if (sfr_mode == "s") {
@@ -75,7 +78,7 @@ void loop() {
       // Serial.println("shredder reverse");
       run_shred = 2;
     } else {
-      // Serial.println("shredder is confused"); // make this a command to turn
+      //Serial.println("shredder is confused"); // make this a command to turn
       // off shredder
     }
 
@@ -87,22 +90,52 @@ void loop() {
       reverseShred();
     }
 
-  } else if (sfr_mode == "r") {
+  }
+  else if (sfr_mode == "r") {
+    // set destemp
+    if (set_temperature == "160") {
+      destemp = 160;
+    } else if (set_temperature == "170") {
+      destemp = 170;
+    } else if (set_temperature == "180") {
+      destemp = 180;
+    } else if (set_temperature == "190") {
+      destemp = 190;
+    }
+
+    // set hopper
+    if (set_hopper == "000001"){
+      hopper = 0b00001001;
+    } else if (set_hopper == "000010"){
+      hopper = 0b00001010;      
+    } else if (set_hopper == "000100"){
+      hopper = 0b00001100;   
+    } else if (set_hopper == "010000"){
+      hopper = 0b00011000;
+    } else if (set_hopper == "100000"){
+      hopper = 0b00101000;
+    } else if (set_hopper == "001000") {
+      hopper = 0b00001000;
+    }
+
     alignerRun();
     winderRunSpeed(500);
     pullerRunSpeed(2000);
+    // runHoppers(0b00111111);
     if (temp_ready == false) {
-      temp_ready = startExtruder(160);
-      runHoppers(0b00000000);
+      temp_ready = startExtruder(destemp);
+      runHoppers(hopper);
+      //runHoppers(0b00111111);
       extrudeStop();
     } else {
-      adjusttemps(160);
-      runHoppers(0b00000000);
+      adjusttemps(destemp);
+      runHoppers(hopper);
+      // runHoppers(0b00111111);
       extrudeRun();
     }
   }
 
-  tms = millis();
+  //tms = millis();
   // if (tms - tlast_time > 30000) {
   //   diameter = indicatorReadMM();
   //   if (diameter > 0.05 && pull_speed < PU_MAX_V) {
@@ -114,20 +147,20 @@ void loop() {
   //   tlast_time = tms;
   // }
 
-  if (tms - last_time > 1500) {
-    Serial.print("Loadcell 1: ");
-    last_time = tms;
-    if (lcH1.is_ready()) {
-      Serial.println(readLoadCell(1));
-    } else {
-      Serial.println("Unreachable");
-    }
-  }
+  // if (tms - last_time > 1500) {
+  //   Serial.print("Loadcell 1: ");
+  //   last_time = tms;
+  //   if (lcH1.is_ready()) {
+  //     Serial.println(readLoadCell(1));
+  //   } else {
+  //     Serial.println("Unreachable");
+  //   }
+  // }
 
-  if (Serial.available() == 1) {
-    if (Serial.read() == 't') {
-    }
-  }
+  // if (Serial.available() == 1) {
+  //   if (Serial.read() == 't') {
+  //   }
+  // }
 
   // if(tms-tlast_time > 10000){
   //   hopper = hopper<<1;
