@@ -39,8 +39,8 @@ bool startExtruder(int destemp) {
   static bool zone2_done = false;
   static bool zone3_done = true; // not monitoring zone 3 bc hb is off
 
-  static int overshoot1 = 20;
-  static int overshoot2 = 40;
+  static int overshoot1 = 10;
+  static int overshoot2 = 20;
   // static int overshoot3 = 60;
 
   static unsigned long lastTime = 0;
@@ -97,7 +97,7 @@ bool startExtruder(int destemp) {
 
 void adjusttemps(int destemp) {
   static int destemp1 = destemp;
-  static int destemp2 = destemp1 - 40;
+  static int destemp2 = destemp1 - 20;
   // static int destemp3 = destemp2 - 60;
 
   static int undershoot = 1;

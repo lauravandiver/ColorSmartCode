@@ -14,8 +14,17 @@ String messageIn = "";
 String sfr_mode = ""; // s for shred, r for recycle
 String run_shredder =
     ""; // Shredder control (off = 0, on foward = 1, on reverse = 2)
+String set_temperature1 = "";
+String set_temperature2 = "";
+String set_temperature3 = "";
 String set_temperature =
     "";                 // Desired set point temperature (C) (three numbers)
+String set_hopper1 = "";
+String set_hopper2 = "";
+String set_hopper3 = "";
+String set_hopper4 = "";
+String set_hopper5 = "";
+String set_hopper6 = "";
 String set_hopper = ""; // Hopper selection variable (one number)
 
 // A2PI

@@ -10,7 +10,7 @@
 #include "pins.h"
 #include <Arduino.h>
 
-#define EXTRUDE_SPEED_PWM 30
+#define EXTRUDE_SPEED_PWM 20
 
 void extrMInit(void) {
   // Initiallize pin modes for the output to the motor driver
