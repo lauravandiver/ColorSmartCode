@@ -66,7 +66,7 @@ uint16_t pullerRunSpeed(uint16_t p_speed) {
   }
 
   // Run the motor at the requested speed
-  as_puller.setSpeed(p_speed);
+  as_puller.setSpeed(-p_speed);
   as_puller.runSpeed();
 
   return p_speed; // Return the speed the motor is set to
