@@ -59,7 +59,7 @@ void pullerInit(void) {
 } // pullerInit
 
 // Function to run the puller at a set speed
-uint16_t pullerRunSpeed(uint16_t p_speed) {
+int16_t pullerRunSpeed(int16_t p_speed) {
   // Check that input speed is acceptable
   if ((p_speed < PU_MIN_V) || (p_speed > PU_MAX_V)) {
     p_speed = PU_DEF_V;
